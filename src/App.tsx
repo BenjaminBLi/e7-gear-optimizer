@@ -1,4 +1,5 @@
 import React from 'react';
+import GearDisplayView from './modules/GearDisplay/GearDisplayContainer'
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <GearDisplayView></GearDisplayView>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
