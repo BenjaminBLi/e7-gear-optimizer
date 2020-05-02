@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import {Gear} from './GearDisplayTypes'
 
 interface Props {
-    gear: string[]
+    gear: Gear[]
 }
 
 interface State{

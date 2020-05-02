@@ -1,5 +1,15 @@
 import { combineReducers } from 'redux'
+import {AppState} from './types'
 
-export default function tmpReducer(state:any, action:any){
+const initialState: AppState = {
+    gear: {
+        currentGear: []
+    },
+    hero: {
+        heroes: []
+    }
+}
+
+export default function tmpReducer(state: AppState = initialState, action:any){
     return state
 }
