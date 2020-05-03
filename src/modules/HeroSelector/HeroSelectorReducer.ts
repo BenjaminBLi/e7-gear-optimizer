@@ -4,8 +4,8 @@ const initialState: HeroSelectorState = {
     heroes: []
 }
 
-export default function heroSelectorReducer(
-    state = initialState,
+export function HeroSelectorReducer(
+    state: HeroSelectorState = initialState,
     action: HeroSelectorActionTypes
 ): HeroSelectorState {
     switch (action.type) {

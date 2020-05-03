@@ -1,7 +1,11 @@
 import {GearDisplayActionTypes, ADD_GEAR, REMOVE_GEAR, GearDisplayState} from './GearDisplayTypes'
 
+const initialState: GearDisplayState = {
+    currentGear: []
+}
+
 export function GearDisplayReducer(
-    state: GearDisplayState, 
+    state: GearDisplayState = initialState, 
     action: GearDisplayActionTypes
 ): GearDisplayState {
     switch(action.type){

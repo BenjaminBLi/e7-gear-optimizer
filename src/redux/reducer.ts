@@ -1,15 +1,5 @@
 import { combineReducers } from 'redux'
-import {AppState} from './types'
+import { GearDisplayReducer } from '../modules/GearDisplay/GearDisplayReducer'
+import {HeroSelectorReducer} from '../modules/HeroSelector/HeroSelectorReducer'
 
-const initialState: AppState = {
-    gear: {
-        currentGear: []
-    },
-    hero: {
-        heroes: []
-    }
-}
-
-export default function tmpReducer(state: AppState = initialState, action:any){
-    return state
-}
+export default combineReducers({gear: GearDisplayReducer, hero: HeroSelectorReducer})
