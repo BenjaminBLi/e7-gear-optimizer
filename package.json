@@ -48,7 +48,10 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
+    ],
+    "react-router-dom": "^5.1.2",
+    "react_ujs": "^2.6.1",
+    "turbolinks": "^5.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
