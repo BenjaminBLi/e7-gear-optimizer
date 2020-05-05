@@ -186,6 +186,13 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
+    typescript-node (1.6.2)
+      typescript-src (~> 1.6.2)
+    typescript-rails (0.6.2.4)
+      railties
+      tilt
+      typescript-node (>= 1.6.2)
+    typescript-src (1.6.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     web-console (4.0.1)
@@ -226,6 +233,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
+  typescript-rails
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
