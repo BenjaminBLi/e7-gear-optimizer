@@ -72,20 +72,17 @@ We're going to deploy to Elastic Beanstalk, so make sure you have your AWS accou
 3. Run ```eb create -s``` to launch a single instance of the app. You can name the environment and DNS prefix anything you'd like.
     - **Note**: that ```-s``` just means it will launch on a single instance instead of with a load balancer. In production, we might need this later, but for right now, single instance should server us well (and save us cash)
 4. Launch the instance. This will produce an Error code 1, which is fine.
-5. Set the Go to your the `SECRET_KEY_BASE` from console or in the web console:
-    - Either: user command line 
-    ```
+5. Set the `SECRET_KEY_BASE` 
+    - use command line 
+    ```shell
     eb setenv SECRET_KEY_BASE=$SECRET_KEY_BASE RAILS_SKIP_ASSET_COMPILATION=true RAILS_SKIP_MIGRATIONS=true
     ```
-    - Or: go to [Elastic Beanstalk console](https://console.aws.amazon.com/elasticbeanstalk/home) and click your deployed instance environment. Click **Configuration** -> **Software** -> **Edit**-> **Environment Properties** or **Environment Variables** and fill in ```SECRET_KEY_BASE``` as the name with the value the same as the value generated in ```rake secret``` in *Downloading and precompiling project step 4*. 
     - might need `export RUBYOPT='-W:no-deprecated'`
-6. SSH into your instance using instance ec2-user and your Elastic Beanstalk DNS
+6. SSH into your instance using instance ec2-user and your Elastic Beanstalk DNS, Change the file in /etc/nginx/conf.d/elasticbeanstalk/webapp.conf
 
     ```shell
-    ssh -i key.pem ec2-user@yourappprefix.region.elasticbeanstalk.com
+    eb ssh
     ```
-
-7. Change the file in /etc/nginx/conf.d/elasticbeanstalk/webapp.conf
 
     ```shell
     cd /etc/nginx/conf.d/elasticbeanstalk/
@@ -126,7 +123,7 @@ We're going to deploy to Elastic Beanstalk, so make sure you have your AWS accou
         add_header Cache-Control public;
     }
     ```
-8. Restart nginx proxy server
+7. Restart nginx proxy server
 
     ```shell
     sudo su
