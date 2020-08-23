@@ -36,6 +36,7 @@ We're going to deploy to Elastic Beanstalk, so make sure you have your AWS accou
     ```shell
     cd e7-gear-optimizer
     yarn install
+    gem install bundler
     bundle install
     ```
 
@@ -48,19 +49,15 @@ We're going to deploy to Elastic Beanstalk, so make sure you have your AWS accou
 4. Create new secret key and store in config/secrets.yml (save this key for EB env var later)
 
     ```shell
-    rake secret
+    export SECRET_KEY_BASE=$(rake secret)
+    echo $SECRET_KEY_BASE
     ```
 
-    *config/secrets.yml*
-    ```yaml
-    production:
-      secret_key_base: "{insert rake secret output string here}"
-    ```
-
-5. Precompile your assets
+5. Precompile assets, run in production environment mode to double check its fine
 
     ```shell
     rake assets:precompile
+    rails s -e production
     ```
 
 ## Deploy to EB
@@ -74,8 +71,14 @@ We're going to deploy to Elastic Beanstalk, so make sure you have your AWS accou
     - **SSH for you instances needs to be on**, because we'll need it in step 6.
 3. Run ```eb create -s``` to launch a single instance of the app. You can name the environment and DNS prefix anything you'd like.
     - **Note**: that ```-s``` just means it will launch on a single instance instead of with a load balancer. In production, we might need this later, but for right now, single instance should server us well (and save us cash)
-4. Launch the instance. This will produce an Error code 1 (not sure how to fix this issue right now) which is fine.
-5. Go to your the [Elastic Beanstalk console](https://console.aws.amazon.com/elasticbeanstalk/home) and click your deployed instance environment. Click **Configuration** -> **Software** -> **Edit**-> **Environment Properties** or **Environment Variables** and fill in ```SECRET_KEY_BASE``` as the name with the value the same as the value generated in ```rake secret``` in *Downloading and precompiling project step 4*. 
+4. Launch the instance. This will produce an Error code 1, which is fine.
+5. Set the Go to your the `SECRET_KEY_BASE` from console or in the web console:
+    - Either: user command line 
+    ```
+    eb setenv SECRET_KEY_BASE=$SECRET_KEY_BASE RAILS_SKIP_ASSET_COMPILATION=true RAILS_SKIP_MIGRATIONS=true
+    ```
+    - Or: go to [Elastic Beanstalk console](https://console.aws.amazon.com/elasticbeanstalk/home) and click your deployed instance environment. Click **Configuration** -> **Software** -> **Edit**-> **Environment Properties** or **Environment Variables** and fill in ```SECRET_KEY_BASE``` as the name with the value the same as the value generated in ```rake secret``` in *Downloading and precompiling project step 4*. 
+    - might need `export RUBYOPT='-W:no-deprecated'`
 6. SSH into your instance using instance ec2-user and your Elastic Beanstalk DNS
 
     ```shell
@@ -86,7 +89,7 @@ We're going to deploy to Elastic Beanstalk, so make sure you have your AWS accou
 
     ```shell
     cd /etc/nginx/conf.d/elasticbeanstalk/
-    vi webapp.conf
+    sudo vi webapp.conf
     ```
 
     *webapp.conf*
