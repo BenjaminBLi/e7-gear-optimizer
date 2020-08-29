@@ -1,6 +1,5 @@
 /* eslint-disable no-use-before-define */
 import React from 'react';
-import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -15,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MultiSelect() {
-  const classes = useStyles();
+  //const classes = useStyles();
 
   return (
     <div>
@@ -30,7 +29,7 @@ export default function MultiSelect() {
           <TextField
             {...params}
             variant="outlined"
-            label="filterSelectedOptions"
+            label="Pick Heroes"
             placeholder="Favorites"
           />
         )}

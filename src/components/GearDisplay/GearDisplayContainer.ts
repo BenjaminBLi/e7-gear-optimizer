@@ -3,8 +3,11 @@ import GearDisplayView from './GearDisplayView'
 import {AppState} from '../../redux/types'
 import {getGear} from './GearDisplaySelector'
 
+const mapStatetoProps = (state: AppState) => {
+    return {gears: getGear(state)}
+};
+
+
 export default connect(
-    (state: AppState) => {
-        return {gear: getGear(state)}
-    },
+    mapStatetoProps,
 )(GearDisplayView)

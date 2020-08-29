@@ -10,7 +10,10 @@ export function GearDisplayReducer(
 ): GearDisplayState {
     switch(action.type){
         case ADD_GEAR:
-            return state
+            return {
+                ...state,
+                currentGear: [...state.currentGear, ...action.payload.gears]
+            }
         case REMOVE_GEAR:
             return state
         default:

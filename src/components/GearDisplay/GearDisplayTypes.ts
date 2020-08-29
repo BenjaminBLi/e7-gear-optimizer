@@ -36,14 +36,14 @@ export interface Gear{
     subStats: Stat[]
 }
 
-export interface addGear {
+export interface addGearAction {
     type: typeof ADD_GEAR
     payload: {
         gears: Gear[]
     }
 }
 
-export interface removeGear {
+export interface removeGearAction {
     type: typeof REMOVE_GEAR
     payload: {
         gears: Gear[]
@@ -54,4 +54,4 @@ export interface GearDisplayState {
     currentGear: Gear[]
 }
 
-export type GearDisplayActionTypes = addGear | removeGear
+export type GearDisplayActionTypes = addGearAction | removeGearAction

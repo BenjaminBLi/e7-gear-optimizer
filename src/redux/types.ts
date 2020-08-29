@@ -1,5 +1,5 @@
-import {GearDisplayState} from '../modules/GearDisplay/GearDisplayTypes'
-import {HeroSelectorState} from '../modules/HeroSelector/HeroSelectorTypes'
+import {GearDisplayState} from '../components/GearDisplay/GearDisplayTypes'
+import {HeroSelectorState} from '../components/HeroSelector/HeroSelectorTypes'
 export interface AppState{
     gear: GearDisplayState
     hero: HeroSelectorState
