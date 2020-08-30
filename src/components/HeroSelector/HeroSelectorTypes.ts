@@ -1,24 +1,23 @@
-export const HERO_ADDED = 'HeroSelector/added_hero';
-export const HERO_REMOVED = 'HeroSelector/removed_hero';
-
-
+export const HEROES_UPDATED = 'HeroSelector/updated_heroes';
+export const FETCHING_HEROES = 'HeroSelector/fetching_heroes';
 
 export interface HeroSelectorState {
-    heroes: string[]
+    heroes: Hero[]
 }
 
-export interface AddHero{
-    type: typeof HERO_ADDED
+export interface Hero {
+    name: string
+}
+
+export interface FetchHeroAction{
+    type: typeof FETCHING_HEROES
+}
+
+export interface HeroListUpdatedAction{
+    type: typeof HEROES_UPDATED 
     payload: {
-        key: string
+        heroes: Hero[]
     }
 }
 
-export interface RemoveHero{
-    type: typeof HERO_REMOVED
-    payload: {
-        key: string
-    }
-}
-
-export type HeroSelectorActionTypes = AddHero | RemoveHero
+export type HeroSelectorActionTypes = HeroListUpdatedAction | FetchHeroAction

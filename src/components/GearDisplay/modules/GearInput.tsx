@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { addGear } from "../GearDisplayActions"
 
+//TODO: COMPLETE GEAR INPUT PROPERLY 
 interface Props {
     levelList?: number[] //list of gear levels
 }
@@ -12,7 +13,7 @@ const GearInput: React.FunctionComponent<Props> = props => {
     const dispatch = useDispatch();
     
     //initialize that other shit
-    const [values, setters] = useState<Gear>();
+    //const [values, setters] = useState<Gear>();
 
 
     const temp = () => {

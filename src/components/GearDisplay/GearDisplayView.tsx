@@ -19,7 +19,6 @@ const renderGears = (gears: Gear[]) => {
 }
 
 const GearDisplayView: React.FunctionComponent<GearDisplayProps> = props => {
-    const dispatch = useDispatch();
     //we want a grid of gears
     const {gears} = props
     
