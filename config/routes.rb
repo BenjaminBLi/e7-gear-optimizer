@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  resource :articles
   get '*page', to: 'static#index', contraints: ->(req) do
     !req.xhr? && req.format.html?
   end
