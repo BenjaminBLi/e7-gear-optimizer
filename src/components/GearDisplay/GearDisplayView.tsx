@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Gear} from './GearDisplayTypes'
 import GearView from './modules/GearView'
 import { Container } from '@material-ui/core';
 import GearInput from './modules/GearInput';
-import { useDispatch } from 'react-redux';
 
 interface GearDisplayProps {
     gears: Gear[]

@@ -1,8 +1,10 @@
 export const HEROES_UPDATED = 'HeroSelector/updated_heroes';
 export const FETCHING_HEROES = 'HeroSelector/fetching_heroes';
+export const HERO_SELECTED = 'HeroSelector/selected_hero'
 
 export interface HeroSelectorState {
     heroes: Hero[]
+    selectedHeroes: Hero[]
 }
 
 export interface Hero {
@@ -20,4 +22,11 @@ export interface HeroListUpdatedAction{
     }
 }
 
-export type HeroSelectorActionTypes = HeroListUpdatedAction | FetchHeroAction
+export interface HeroSelectedAction{
+    type: typeof HERO_SELECTED
+    payload: {
+        heroes: Hero[]
+    }
+}
+
+export type HeroSelectorActionTypes = HeroListUpdatedAction | FetchHeroAction | HeroSelectedAction

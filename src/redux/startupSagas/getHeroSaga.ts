@@ -1,5 +1,4 @@
 import { put } from 'redux-saga/effects'
-import { HeroListUpdatedAction } from '../../components/HeroSelector/HeroSelectorTypes';
 import { fetchHeroes, updateHeroes } from '../../components/HeroSelector/HeroSelectorActions';
 
 export default function* updateHeroListSaga() {
@@ -10,6 +9,4 @@ export default function* updateHeroListSaga() {
     const heroes = heroJSON.results
 
     yield put(updateHeroes(heroes))
-
-
 }

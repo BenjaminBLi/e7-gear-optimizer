@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { useDispatch } from 'react-redux';
 import { Hero } from './HeroSelectorTypes';
+import { selectedHeroes } from './HeroSelectorActions';
 
 //TODO: modify heroes to be fixed list (?)
 
@@ -24,6 +24,10 @@ const HeroSelectorView: React.FunctionComponent<Props> = props => {
                 options={heroes}
                 getOptionLabel={(option: Hero) => option.name}
                 filterSelectedOptions
+                onChange={(e, value) => {
+                    console.log(e.target, value);
+                    dispatch(selectedHeroes(value))
+                }}
                 renderInput={(params) => (
                 <TextField
                     {...params}

@@ -1,7 +1,8 @@
-import { HeroSelectorActionTypes, HeroSelectorState, HEROES_UPDATED} from './HeroSelectorTypes'
+import { HeroSelectorActionTypes, HeroSelectorState, HEROES_UPDATED, HERO_SELECTED} from './HeroSelectorTypes'
 
 const initialState: HeroSelectorState = {
-    heroes: []
+    heroes: [],
+    selectedHeroes: []
 }
 
 export function HeroSelectorReducer(
@@ -13,6 +14,11 @@ export function HeroSelectorReducer(
             return {
                 ...state,
                 heroes: action.payload.heroes
+            }
+        case HERO_SELECTED:
+            return {
+                ...state,
+                selectedHeroes: action.payload.heroes
             }
         default:
             return state
