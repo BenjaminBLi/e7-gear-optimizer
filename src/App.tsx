@@ -3,20 +3,18 @@ import GearDisplayView from './components/GearDisplay/GearDisplayContainer'
 import HeroSelectorView from './components/HeroSelector/HeroSelectorContainer'
 import './App.css';
 import { Box } from '@material-ui/core';
+import { MuiThemeProvider } from 'material-ui/styles';
 
 function App() {
   return (
-    <div className="App">
-      <header>
-
-      </header>
-      <body>
-        <GearDisplayView></GearDisplayView>
-        <Box>
-          <HeroSelectorView></HeroSelectorView>
-        </Box>
-      </body>
-    </div>
+    <MuiThemeProvider>
+        <div className="App">
+            <GearDisplayView></GearDisplayView>
+            <Box>
+              <HeroSelectorView></HeroSelectorView>
+            </Box>
+        </div>
+  </MuiThemeProvider>
   );
 }
 

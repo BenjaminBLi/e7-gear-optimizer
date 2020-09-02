@@ -14,6 +14,20 @@ export type GearTypes =
     'rage' |
     'immunity'
 
+export const SetTypeList: GearTypes[] =  [
+    'speed' ,
+    'hit' , 
+    'crit' ,
+    'hp' ,
+    'def' ,
+    'attack' ,
+    'destruction' ,
+    'counter' ,
+    'resist' ,
+    'rage' ,
+    'immunity'
+]
+
 export type StatTypes =
     'hp' | 'hp%' |
     'def' | 'def%' |
@@ -23,6 +37,17 @@ export type StatTypes =
     'crit damage' |
     'effectiveness' |
     'effect resist'
+
+export const StatTypeList: StatTypes[] = [
+    'hp' , 'hp%' ,
+    'def' , 'def%' ,
+    'attack' , 'attack%' ,
+    'speed' ,
+    'crit chance' ,
+    'crit damage' ,
+    'effectiveness' ,
+    'effect resist'
+]
 
 export type Stat = {
     val: number
