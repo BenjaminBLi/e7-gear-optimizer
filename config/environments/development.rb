@@ -18,7 +18,12 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
-    config.cache_store = :memory_store
+    # config.cache_store = :memory_store
+    config.cache_store = :redis_store, {
+      expires_in: 1.hour,
+      namespace: 'cache',
+      redis: { host: 'localhost', port: 6379, db: 0 },
+      }
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
@@ -27,6 +32,14 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+  config.force_ssl = true
+  config.session_store :redis_store,
+    servers: ["redis://localhost:6379/0/session"],
+    expire_after: 90.minutes,
+    key: "_e7_gear_optimizer_session",
+    threadsafe: true,
+    # signed: true,
+    secure: true
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   # config.active_storage.service = :local

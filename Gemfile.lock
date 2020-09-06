@@ -167,6 +167,23 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
+    redis (4.2.1)
+    redis-actionpack (5.2.0)
+      actionpack (>= 5, < 7)
+      redis-rack (>= 2.1.0, < 3)
+      redis-store (>= 1.1.0, < 2)
+    redis-activesupport (5.2.0)
+      activesupport (>= 3, < 7)
+      redis-store (>= 1.3, < 2)
+    redis-rack (2.1.3)
+      rack (>= 2.0.8, < 3)
+      redis-store (>= 1.2, < 2)
+    redis-rails (5.0.2)
+      redis-actionpack (>= 5.0, < 6)
+      redis-activesupport (>= 5.0, < 6)
+      redis-store (>= 1.2, < 2)
+    redis-store (1.9.0)
+      redis (>= 4, < 5)
     regexp_parser (1.7.0)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
@@ -245,6 +262,7 @@ DEPENDENCIES
   puma (= 4.3.5)
   rails (~> 6.0.2, >= 6.0.2.2)
   react-rails
+  redis-rails
   sass-rails (>= 6)
   selenium-webdriver
   spring
