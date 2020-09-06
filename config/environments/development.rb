@@ -38,6 +38,7 @@ Rails.application.configure do
     expire_after: 90.minutes,
     key: "_e7_gear_optimizer_session",
     threadsafe: true,
+    # TODO: wtf is this option
     # signed: true,
     secure: true
 
