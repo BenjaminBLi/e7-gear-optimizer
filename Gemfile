@@ -32,7 +32,10 @@ gem 'bson_ext'
 gem 'coffee-rails', '~> 5.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
-# redi-rails use
+# redi use
+
+gem 'hiredis'
+gem 'redis'
 gem 'redis-rails'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
