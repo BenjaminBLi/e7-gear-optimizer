@@ -4,11 +4,11 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import {Gear} from '../GearDisplayTypes'
-import { Paper } from '@material-ui/core';
+import { Paper, Box } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    maxWidth: "15%",
   },
   bullet: {
     display: 'inline-block',
@@ -32,8 +32,9 @@ const SingleGear: React.FunctionComponent<Props> = props => {
   const {mainStat, subStats, set} = props.gear
 
   return (
+    <Box borderRadius={40} >
     <Paper>
-      <Card className={classes.root} variant="outlined">
+      <Card variant="outlined">
         <CardContent>
           <Typography color="textSecondary">
             {set}
@@ -50,6 +51,7 @@ const SingleGear: React.FunctionComponent<Props> = props => {
         </CardContent>
       </Card>
     </Paper>
+    </Box>
   );
 
 }

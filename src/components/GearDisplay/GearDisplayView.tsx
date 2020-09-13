@@ -1,31 +1,58 @@
 import React from 'react';
 import {Gear} from './GearDisplayTypes'
 import GearView from './modules/GearView'
-import { Container } from '@material-ui/core';
+import { Container, GridList, GridListTile, Grid, makeStyles, Theme, createStyles, Box } from '@material-ui/core';
 import GearInput from './modules/GearInput';
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      overflow: 'hidden',
+      backgroundColor: theme.palette.background.paper,
+    },
+    gridList: {
+      width: "50%",
+      height: 450,
+    },
+  }),
+);
 interface GearDisplayProps {
     gears: Gear[]
     //submitFunc: (gears: Gear[]) => void
 }
 
+//TODO: implement renderGears properly
 const renderGears = (gears: Gear[]) => {
   return (
-        <div>
-            {gears.map(gear => (<GearView gear={gear}/>))}
-        </div>
-      )
+        <GridList cellHeight={160}>
+            {gears.map(gear => (
+                <GridListTile>
+                    <GearView gear={gear}/>
+                </GridListTile>
+            ))}
+        </GridList>
+      );
 }
 
 const GearDisplayView: React.FunctionComponent<GearDisplayProps> = props => {
     //we want a grid of gears
+    const classes = useStyles()
     const {gears} = props
     
     return (
-        <Container>
+        <Box display="flex">
             <GearInput></GearInput>
-            {renderGears(gears)}
-        </Container>
+            <GridList cellHeight={160} className={classes.gridList}>
+                {gears.map(gear => (
+                    <GridListTile>
+                        <GearView gear={gear}/>
+                    </GridListTile>
+                ))}
+            </GridList>
+        </Box>
     );
 }
 

@@ -1,13 +1,14 @@
-import { Container, TextField, Button, Select, FormControl, InputLabel } from "@material-ui/core"
+import { Container, TextField, Button, Select, FormControl, InputLabel, Grid, Box } from "@material-ui/core"
 import {Gear, GearTypes, StatTypes} from '../GearDisplayTypes'
 import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { addGear } from "../GearDisplayActions"
 import { StatTypeList, SetTypeList } from "../GearDisplayTypes"
 import { MenuItem } from "material-ui"
-import { StatOptions } from "fs"
 
 //TODO: COMPLETE GEAR INPUT PROPERLY 
+//TODO: Gear input validation
+
 interface Props {
     levelList?: number[] //list of gear levels
 }
@@ -23,6 +24,7 @@ const renderStatOptions = () => {
         return <MenuItem value={stat}>{stat}</MenuItem>
     })
 }
+
 
 //TODO: PROPERLY TYPE EVENT STUFF
 
@@ -99,15 +101,14 @@ const GearInput: React.FunctionComponent<Props> = props => {
     }
 
     const temp = () => {
-        const test: Gear = {set: "hp", mainStat: {val: 12, type: "hp"}, subStats: []}
         //console.log(values, setters);
         dispatch(addGear([values]));
     }
 
     //TODO: rework labeling and naming for fields
     return (
-        <Container>
-            <div>
+        <Box display>
+            <Box>
                 <FormControl variant="outlined">
                     <InputLabel htmlFor="set">Set</InputLabel>
                     <Select label={"set"} placeholder={"pick set"} 
@@ -116,6 +117,9 @@ const GearInput: React.FunctionComponent<Props> = props => {
                         {renderSetOptions()}
                     </Select>
                 </FormControl> 
+            </Box>
+
+            <Box>
                 <TextField label={"Main Stat"} 
                     variant="outlined"
                     name="main"
@@ -131,6 +135,10 @@ const GearInput: React.FunctionComponent<Props> = props => {
                         {renderStatOptions()}
                     </Select>
                 </FormControl> 
+            </Box>
+
+            <Box>
+
                 <TextField label={"sub1"} 
                     variant="outlined"
                     name="sub1"
@@ -146,6 +154,9 @@ const GearInput: React.FunctionComponent<Props> = props => {
                         {renderStatOptions()}
                     </Select>
                 </FormControl> 
+            </Box>
+
+            <Box>
                 <TextField label={"sub2"} 
                     variant="outlined"
                     name="sub2"
@@ -161,6 +172,9 @@ const GearInput: React.FunctionComponent<Props> = props => {
                         {renderStatOptions()}
                     </Select>
                 </FormControl> 
+            </Box>
+
+            <Box>
                 <TextField label={"sub3"} 
                     variant="outlined"
                     name="sub3"
@@ -176,6 +190,9 @@ const GearInput: React.FunctionComponent<Props> = props => {
                         {renderSetOptions()}
                     </Select>
                 </FormControl> 
+            </Box>
+
+            <Box>
                 <TextField label={"sub4"} 
                     variant="outlined"
                     name="sub4"
@@ -191,11 +208,12 @@ const GearInput: React.FunctionComponent<Props> = props => {
                         {renderSetOptions()}
                     </Select>
                 </FormControl> 
-            </div>
-            <div>
+            </Box>
+
+            <Box>
                 <Button onClick={temp}>Submit</Button>
-            </div>
-        </Container>
+            </Box>
+        </Box>
     )
 }
 

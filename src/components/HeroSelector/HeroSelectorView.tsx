@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { useDispatch } from 'react-redux';
 import { Hero } from './HeroSelectorTypes';
 import { selectedHeroes } from './HeroSelectorActions';
+import { Box } from '@material-ui/core';
 
 //TODO: modify heroes to be fixed list (?)
 
@@ -11,13 +12,21 @@ interface Props {
     heroes: Hero[]
 }
 
+const renderHeroes = (heroes: Hero[]) => {
+    //we want a grid to display of all the heroes w/ the selected removed...
+    
+}
+
 const HeroSelectorView: React.FunctionComponent<Props> = props => {
     const dispatch = useDispatch();
 
     const {heroes} = props
 
+    //TODO: implement hero displays:
+    // gridlist for unselected heroes in autocomplete, + dropdown
+    // Gridlist for selected heroes
     return (
-        <div>
+        <Box>
             <Autocomplete
                 multiple
                 id="tags-outlined"
@@ -37,7 +46,7 @@ const HeroSelectorView: React.FunctionComponent<Props> = props => {
                 />
                 )}
             />
-        </div>
+        </Box>
     );
 }
 
